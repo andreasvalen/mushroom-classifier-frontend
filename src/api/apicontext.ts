@@ -1,4 +1,5 @@
 export const mushroomServerURL = "http://localhost:8000";
+export const frontEndServerURL = "http://localhost:3000";
 
 export const mushroomFetch = async (
   target: string,

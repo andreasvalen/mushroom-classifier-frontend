@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { IMusrooms } from "../../../api/interfaces";
 import { mushroomAPI } from "../../../api/mushroomAPI";
 import MushroomCard from "../../MushroomCard";
@@ -15,16 +16,26 @@ const SearchPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <CardsWrapper>
       {data ? (
         data.map((mushroom, idx) => (
-          <MushroomCard mushroom={mushroom} key={`mc_idx`} />
+          <MushroomCard mushroom={mushroom} key={`mc_${idx}`} />
         ))
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </CardsWrapper>
   );
 };
 
 export default SearchPage;
+
+const CardsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    margin: 4px;
+  }
+`;

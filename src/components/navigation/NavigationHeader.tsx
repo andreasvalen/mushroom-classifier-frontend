@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { palette } from "../../palette";
 
 interface Props {
   title: string;
@@ -7,7 +8,7 @@ interface Props {
 
 const NavigationHeader: React.FC<Props> = ({ title }) => {
   return (
-    <nav>
+    <nav style={{ backgroundColor: palette.primaryBlue }}>
       <h1>{title}</h1>
       <ul>
         <li>
