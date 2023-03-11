@@ -46,7 +46,15 @@ const StyledHeader = styled.div`
   justify-contents: center;
   align-items: center;
   color: ${palette.brownDark};
+
   text-shadow: 1px 1px 1px ${palette.brownDarker};
+
+  transition: transform 0.25s ease-in-out;
+
+  :hover {
+    transform: scale(1.025);
+    box-shadow: 0 0 15px rgba(0, 100, 100, 0.5);
+  }
 `;
 
 const StyledWrapper = styled.div`

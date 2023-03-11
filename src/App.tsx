@@ -7,6 +7,7 @@ import LandingPage from "./components/pages/home/Home";
 import SearchPage from "./components/pages/search/SearchPage";
 import styled from "styled-components";
 import { palette } from "./palette";
+import TakePhoto from "./components/pages/home/TakePhoto";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/counter" element={<div>mushrroms are nice</div>} />
+          <Route
+            path="/counter"
+            element={
+              <div>
+                <TakePhoto />
+              </div>
+            }
+          />
           <Route path="/*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
