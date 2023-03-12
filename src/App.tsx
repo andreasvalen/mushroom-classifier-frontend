@@ -13,7 +13,7 @@ function App() {
   return (
     <AppWrapper>
       <BrowserRouter>
-        <NavigationHeader title="Rapporty" />
+        <NavigationHeader />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/search" element={<SearchPage />} />
@@ -28,6 +28,9 @@ function App() {
           <Route path="/*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
+      <StyledFooter>
+        <p>&copy; {"Gruppe6 - DAT251 - 2023"}</p>
+      </StyledFooter>
     </AppWrapper>
   );
 }
@@ -35,3 +38,7 @@ function App() {
 export default App;
 
 const AppWrapper = styled.div``;
+
+const StyledFooter = styled.footer`
+  text-align: center;
+`;

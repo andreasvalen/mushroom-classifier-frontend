@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import styled from "styled-components";
 import { mushroomAPI } from "../../../api/mushroomAPI";
 import { hexToRgba, palette } from "../../../palette";
 
@@ -6,7 +7,7 @@ const TakePhoto = () => {
   const [file, setFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [dragging, setDragging] = useState<boolean>(false);
-  const [navResult, setNavResult] = useState<any | null>(null);
+  const [cameraActive, setCameraActive] = useState<boolean>(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -43,6 +44,7 @@ const TakePhoto = () => {
 
   const handleTakePhoto = () => {
     handleClear();
+    setCameraActive(true);
     navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
@@ -59,6 +61,7 @@ const TakePhoto = () => {
         console.log("Closing camera stream...");
       });
     }
+    setCameraActive(false);
   };
 
   const handleClear = () => {
@@ -73,6 +76,12 @@ const TakePhoto = () => {
       const context = canvas.getContext("2d");
 
       if (context) {
+        canvas.width = 540;
+        canvas.height = 400;
+
+        console.log("canvas", canvas.width, canvas.height);
+        console.log("video", video.width, video.height);
+
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         canvas.toBlob((blob) => {
           if (blob) {
@@ -103,14 +112,7 @@ const TakePhoto = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <StyledWrapper>
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -164,7 +166,7 @@ const TakePhoto = () => {
                 width: "auto",
                 zIndex: 2,
               }}
-              alt={"edible"}
+              alt={"draganddropicon"}
             />
             <img
               src={`/chantarell-icon.png`}
@@ -179,7 +181,7 @@ const TakePhoto = () => {
                 zIndex: -1,
                 transform: "translate(-50%, -50%)",
               }}
-              alt={"edible"}
+              alt={"chanty"}
             />
             <div
               style={{
@@ -206,14 +208,74 @@ const TakePhoto = () => {
           />
         )}
       </div>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handleTakePhoto}>Use camera</button>
-      <button onClick={handleCapturePhoto}>Capture</button>
-      <button onClick={handleStopPhoto}>Stop</button>
-      {fileUrl && <button onClick={handleUpload}>Upload</button>}
-      {fileUrl && <button onClick={handleClear}>Clear</button>}
-    </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        {!cameraActive && (
+          <button onClick={handleTakePhoto}>
+            {
+              <img
+                src={`/photo-icon.png`}
+                style={{
+                  height: "30px",
+                  width: "auto",
+                }}
+                alt={"edible"}
+              />
+            }
+            {"Bruk kamera"}
+          </button>
+        )}
+        {cameraActive && (
+          <button onClick={handleCapturePhoto}>Ta bilde!</button>
+        )}
+        {cameraActive && <button onClick={handleStopPhoto}>Stop</button>}
+        {fileUrl && <button onClick={handleUpload}>Last opp</button>}
+        {fileUrl && <button onClick={handleClear}>Slett</button>}
+      </div>
+    </StyledWrapper>
   );
 };
 
 export default TakePhoto;
+
+const StyledWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin: 6px;
+    background: linear-gradient(to bottom, #ff69b4, #ff8c00);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button:hover {
+    background: linear-gradient(to bottom, #ff8c00, #ff69b4);
+  }
+
+  input {
+    margin: 6px;
+    background: linear-gradient(to bottom, #ff69b4, #ff8c00);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  input:hover {
+    background: linear-gradient(to bottom, #ff8c00, #ff69b4);
+  }
+`;
