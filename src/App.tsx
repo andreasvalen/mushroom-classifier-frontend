@@ -34,8 +34,4 @@ function App() {
 
 export default App;
 
-const AppWrapper = styled.div`
-  * {
-    border: 1px solid rgba(0, 0, 0, 0.3);
-  }
-`;
+const AppWrapper = styled.div``;

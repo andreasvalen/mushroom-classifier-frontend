@@ -19,9 +19,11 @@ export const mushroomFetch = async ({
   console.log("search:", searchParams, !!searchParams);
   const url = `${mushroomServerURL}/${endpoint}`;
 
+  console.log("type:", contentType);
+
   const response = await fetch(
     `${url}${
-      searchParams.values.length == 0 ? "" : "?"
+      searchParams.values.length == 0 ? "/" : "?"
     }${searchParams.toString()}`,
     {
       method: method,
