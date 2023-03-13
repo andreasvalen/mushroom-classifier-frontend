@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { IMusrooms } from "../../../api/interfaces";
+import { IMusroom } from "../../../api/interfaces";
 import { mushroomAPI } from "../../../api/mushroomAPI";
 import MushroomCard from "../../MushroomCard";
 
 const SearchPage: React.FC = () => {
-  const [data, setData] = useState<[IMusrooms] | null>(null);
+  const [data, setData] = useState<[IMusroom] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +35,7 @@ const CardsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 4px;
   div {
     margin: 4px;
   }

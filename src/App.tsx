@@ -1,13 +1,10 @@
-import React from "react";
-import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import "./App.css";
+import styled from "styled-components";
 import NavigationHeader from "./components/navigation/NavigationHeader";
 import LandingPage from "./components/pages/home/Home";
+import PredictionPage from "./components/pages/prediction/PredictionPage";
 import SearchPage from "./components/pages/search/SearchPage";
-import styled from "styled-components";
-import { palette } from "./palette";
-import TakePhoto from "./components/pages/home/TakePhoto";
 
 function App() {
   return (
@@ -17,14 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route
-            path="/counter"
-            element={
-              <div>
-                <TakePhoto />
-              </div>
-            }
-          />
+          <Route path="/prediction" element={<PredictionPage />} />
           <Route path="/*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>

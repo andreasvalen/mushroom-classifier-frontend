@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { mushroomAPI } from "../../../api/mushroomAPI";
 import { hexToRgba, palette } from "../../../palette";
+import { useNavigate } from "react-router-dom";
+import queryString from "query-string";
 
 const TakePhoto = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -11,6 +13,7 @@ const TakePhoto = () => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const navigate = useNavigate();
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -107,7 +110,8 @@ const TakePhoto = () => {
       const res = await mushroomAPI.getPredictionFromImage(file);
 
       console.log("res", res);
-      // Call your API to upload the file here using axios or fetch
+      const ressy = JSON.stringify(res);
+      navigate(`/prediction?prediction=${ressy}`);
     }
   };
 

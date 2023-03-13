@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { frontEndServerURL } from "../api/apicontext";
-import { IMusrooms } from "../api/interfaces";
+import { IMusroom } from "../api/interfaces";
 import { hexToRgba, palette } from "../palette";
 
 interface MushroomProps {
-  mushroom: IMusrooms;
+  mushroom: IMusroom;
 }
 
 const MushroomCard: React.FC<MushroomProps> = ({ mushroom }) => {
@@ -39,7 +39,7 @@ const MushroomCard: React.FC<MushroomProps> = ({ mushroom }) => {
 
 export default MushroomCard;
 
-const StyledHeader = styled.div`
+export const StyledHeader = styled.div`
   font-size: 28px;
   font-weight: 600;
   display: flex;
@@ -57,7 +57,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const StyledWrapper = styled.div`
+export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -68,13 +68,13 @@ const StyledWrapper = styled.div`
   max-width: 450px;
 `;
 
-const StyledIconImg = styled.img`
+export const StyledIconImg = styled.img`
   width: 30px;
   height: 30px;
   margin-left: 10px;
 `;
 
-const StyledMushroomImg = styled.img`
+export const StyledMushroomImg = styled.img`
   width: 100%;
   height: auto;
   border: 1px solid black;

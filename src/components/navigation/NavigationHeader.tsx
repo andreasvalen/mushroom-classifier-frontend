@@ -20,30 +20,27 @@ const NavigationHeader: React.FC = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={`/chantarell-icon.png`} //matblekksopp.png`}
-            style={{
-              height: "70px",
-              width: "auto",
-              borderRadius: "50%",
-              marginLeft: "18px",
-            }}
-            alt={"edible"}
-          />
-          <StyledFontWrapper>
-            <h1 className="l1">{"Shroomy"}</h1>
-            <h1 className="l2">{"Shroomy"}</h1>
-            <h1 className="l3">{"Shroomy"}</h1>
-            <h1 className="l4">{"Shroomy"}</h1>
-            <h1 className="l5">{"Shroomy"}</h1>
-            <h1 className="l6">{"Shroomy"}</h1>
-          </StyledFontWrapper>
+          <Link to="/">
+            <StyledShroomyImage
+              src={`/chantarell-icon.png`} //matblekksopp.png`}
+              alt={"Shroomy"}
+            />
+          </Link>
+          <Link to="/">
+            <StyledFontWrapper>
+              <h1 className="l1">{"Shroomy"}</h1>
+              <h1 className="l2">{"Shroomy"}</h1>
+              <h1 className="l3">{"Shroomy"}</h1>
+              <h1 className="l4">{"Shroomy"}</h1>
+              <h1 className="l5">{"Shroomy"}</h1>
+              <h1 className="l6">{"Shroomy"}</h1>
+            </StyledFontWrapper>
+          </Link>
         </div>
         <StyledLinkWrapper>
           <Link to="/">Home</Link>
-          <Link to="/counter">counter</Link>
-          <Link to="/contact">Contact</Link>
           <Link to="/search">Search</Link>
+          <Link to="/prediction?name=testy&edible=False">Prediction</Link>
         </StyledLinkWrapper>
       </div>
     </nav>
@@ -78,12 +75,12 @@ const StyledFontWrapper = styled.div`
     position: absolute;
     top: 2px;
     left: 2px;
-    color: blue;
+    color: #ff000080;
     z-index: 9;
   }
   .l3 {
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: 4px;
     color: green;
     z-index: 8;
@@ -91,29 +88,36 @@ const StyledFontWrapper = styled.div`
 
   .l4 {
     position: absolute;
-    top: 5px;
+    top: 6px;
     left: 6px;
-    color: yellow;
+    color: blue;
     z-index: 7;
   }
   .l5 {
     position: absolute;
-    top: 7px;
-    left: 7px;
-    color: pink;
+    top: 8px;
+    left: 8px;
+    color: yellow;
     z-index: 6;
   }
   .l6 {
     position: absolute;
     top: 9px;
-    left: 8px;
-    color: black;
+    left: 9px;
+    color: pink;
     z-index: 5;
   }
 
   h1 {
     font-family: retro;
     font-size: 35px;
+
+    transition: transform 0.3s ease-in-out;
+
+    :hover {
+      transform: scale(1.2) rotate(745deg);
+      cursor: pointer;
+    }
   }
 `;
 
@@ -125,8 +129,26 @@ const StyledLinkWrapper = styled.div`
 
   a {
     font-family: retro;
-    color: ${palette.brownDarker};
+    color: ${palette.lightOrange};
     padding: 10px;
     font-size: 25px;
+    text-shadow: -1px -1px 0 ${palette.brownDarker},
+      1px -1px 0 ${palette.brownDarker}, -1px 1px 0 ${palette.brownDarker},
+      1px 1px 0 ${palette.brownDarker};
+  }
+`;
+
+const StyledShroomyImage = styled.img`
+  height: 70px;
+  width: auto;
+  border-radius: 50%;
+  margin-left: 18px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease-in-out;
+
+  :hover {
+    transform: scale(1.2) rotate(745deg);
+    box-shadow: 0 0 15px rgba(0, 100, 100, 0.5);
+    cursor: pointer;
   }
 `;

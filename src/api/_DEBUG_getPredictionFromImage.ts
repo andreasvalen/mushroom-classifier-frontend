@@ -1,5 +1,5 @@
 import { mushroomFetch } from "./apicontext";
-import { IMusrooms } from "./interfaces";
+import { IMusroom } from "./interfaces";
 //Gets all mushrooms from the database
 const target = "mushrooms/predict";
 

@@ -1,4 +1,4 @@
-export interface IMusrooms {
+export interface IMusroom {
   id: number;
   name: string;
   description: string;
@@ -6,4 +6,9 @@ export interface IMusrooms {
   poisonous: boolean;
   area: string;
   image_url: string;
+  latin_name: string;
+}
+export interface IPrediction {
+  prediction: IMusroom[];
+  probability: number; //Number between 0 and 1
 }

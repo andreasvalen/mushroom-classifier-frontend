@@ -1,7 +1,7 @@
 import { mushroomFetch } from "./apicontext";
-import { IMusrooms } from "./interfaces";
+import { IMusroom } from "./interfaces";
 //Gets all mushrooms from the database
 const endpoint = "mushrooms";
 
-export const getMushrooms: () => Promise<[IMusrooms]> = async () =>
+export const getMushrooms: () => Promise<[IMusroom]> = async () =>
   await mushroomFetch({ endpoint });
