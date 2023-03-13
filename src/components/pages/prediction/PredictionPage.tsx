@@ -6,7 +6,11 @@ import MushroomPredictionCard from "../../MushroomPredictionCard";
 
 const PredictionPage: React.FC = () => {
   const predictionJSON = queryString.parse(window.location.search).prediction;
-  const prediction = JSON.parse(predictionJSON as any);
+  let prediction = JSON.parse(predictionJSON as any);
+
+  if (prediction.prediction.length == 0) {
+    prediction.prediction.push(fallback_prediction);
+  }
 
   console.log("querystring_parsed: ", prediction);
 
@@ -46,4 +50,15 @@ const _DEBUG_prediction = {
     },
   ],
   probability: 0.5896577835083008,
+};
+
+const fallback_prediction = {
+  area: "N/A",
+  description: "Soppen finnes ikke i databasen, har du oppdaget en ny soppart?",
+  edible: false,
+  id: -1,
+  image_url: "/matblekksopp.png",
+  latin_name: "Soppenis Finnisikke",
+  name: "Finnes ikke i databasen",
+  poisonous: false,
 };

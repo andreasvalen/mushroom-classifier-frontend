@@ -19,7 +19,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <StyledFooter>
-        <p>&copy; {"Gruppe6 - DAT251 - 2023"}</p>
+        <p>&copy; {"Gruppe 1 - DAT251 - 2023"}</p>
       </StyledFooter>
     </AppWrapper>
   );
