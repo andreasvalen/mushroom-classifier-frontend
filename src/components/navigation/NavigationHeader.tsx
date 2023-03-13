@@ -40,7 +40,7 @@ const NavigationHeader: React.FC = () => {
         <StyledLinkWrapper>
           <Link to="/">Home</Link>
           <Link to="/search">Search</Link>
-          <Link to="/prediction?name=testy&edible=False">Prediction</Link>
+          <Link to={DEBUG_predictionURLWithData}>Prediction_dev</Link>
         </StyledLinkWrapper>
       </div>
     </nav>
@@ -48,6 +48,9 @@ const NavigationHeader: React.FC = () => {
 };
 
 export default NavigationHeader;
+
+const DEBUG_predictionURLWithData =
+  "/prediction?prediction={%22prediction%22:[{%22id%22:23,%22name%22:%22Traktkantarell%22,%22latin_name%22:%22Craterellus%20tubaeformis%22,%22description%22:%22Traktkantarell%20har%20gr%C3%A5brun,%20traktformet%20hatt,%20nedl%C3%B8pende%20folder%20og%20hul%20stilk.%20Undersiden%20av%20hatten%20er%20lysere%20enn%20oversiden.%20Avrundet%20stilk.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://upload.wikimedia.org/wikipedia/commons/1/14/Cantharellus_tubaeformis_1.jpg%22},{%22id%22:36,%22name%22:%22Trompetsopper%22,%22latin_name%22:%22Craterellus%22,%22description%22:%22Description%20missing.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://media.snl.no/media/14704/standard_Craterellus_cornucopioides-Oslo-Bygdoy_3_.JPG%22}],%22probability%22:0.5823688507080078}";
 
 const StyledFontWrapper = styled.div`
   @font-face {
