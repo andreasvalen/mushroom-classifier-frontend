@@ -82,9 +82,6 @@ const TakePhoto = () => {
         canvas.width = 540;
         canvas.height = 400;
 
-        console.log("canvas", canvas.width, canvas.height);
-        console.log("video", video.width, video.height);
-
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         canvas.toBlob((blob) => {
           if (blob) {
@@ -106,10 +103,8 @@ const TakePhoto = () => {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      console.log(file);
       const res = await mushroomAPI.getPredictionFromImage(file);
 
-      console.log("res", res);
       const ressy = JSON.stringify(res);
       navigate(`/prediction?prediction=${ressy}`);
     }

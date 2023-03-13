@@ -81,6 +81,7 @@ export const StyledMushroomImg = styled.img`
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.25s ease-in-out;
+  cursor: pointer;
 
   :hover {
     transform: scale(1.025);

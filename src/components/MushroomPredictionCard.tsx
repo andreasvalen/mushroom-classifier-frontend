@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { IMusroom, IPrediction } from "../api/interfaces";
+import { palette } from "../palette";
 import {
   StyledHeader,
   StyledIconImg,
@@ -15,17 +16,23 @@ interface MushroomPredictionProps {
 const MushroomPredictionCard: React.FC<MushroomPredictionProps> = ({
   prediction,
 }) => {
+  const [expandData, setExpandData] = useState<boolean>(false);
+
+  const handleTakePhoto = () => {
+    setExpandData(!expandData);
+  };
+
   const mushroom = prediction.prediction[0];
-  console.log("pred", prediction, Number(prediction.probability).toFixed(2));
   const predStr = Number(prediction.probability * 100).toFixed(3);
 
   return (
-    <div>
-      <StyledPredictionDiv>
-        {`Sannsynlighet:`}
-        <span>{predStr}</span>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <StyledNameDiv>
+        {prediction.name} <span>{predStr}</span>
         {`%`}
-      </StyledPredictionDiv>
+      </StyledNameDiv>
       <StyledWrapper>
         <StyledHeader>
           {mushroom.name}{" "}
@@ -36,19 +43,27 @@ const MushroomPredictionCard: React.FC<MushroomPredictionProps> = ({
             <StyledIconImg src={`/poisonous-icon.png`} alt={"poisonous"} />
           )}
         </StyledHeader>
-        <StyledMushroomImg src={mushroom.image_url} alt={mushroom.name} />
-        <p>
-          <strong>Area:</strong> {mushroom.area}
-        </p>
-        <p>
-          <strong>Description:</strong> {mushroom.description}
-        </p>
-        <p>
-          <strong>Edible:</strong> {mushroom.edible ? "Yes" : "No"}
-        </p>
-        <p>
-          <strong>Poisonous:</strong> {mushroom.poisonous ? "Yes" : "No"}
-        </p>
+        <StyledMushroomImg
+          src={mushroom.image_url}
+          alt={mushroom.name}
+          onClick={handleTakePhoto}
+        />
+        {expandData && (
+          <>
+            <p>
+              <strong>Area:</strong> {mushroom.area}
+            </p>
+            <p>
+              <strong>Description:</strong> {mushroom.description}
+            </p>
+            <p>
+              <strong>Edible:</strong> {mushroom.edible ? "Yes" : "No"}
+            </p>
+            <p>
+              <strong>Poisonous:</strong> {mushroom.poisonous ? "Yes" : "No"}
+            </p>
+          </>
+        )}
       </StyledWrapper>
     </div>
   );
@@ -56,14 +71,15 @@ const MushroomPredictionCard: React.FC<MushroomPredictionProps> = ({
 
 export default MushroomPredictionCard;
 
-const StyledPredictionDiv = styled.div`
+const StyledNameDiv = styled.div`
   @font-face {
     font-family: retro;
     src: url(retroFont.ttf);
   }
   font-family: retro;
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
+  color: ${palette.brownDarker};
 
   span {
     font-family: "Comic Sans MS", "Comic Sans";

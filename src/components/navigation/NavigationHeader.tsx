@@ -10,6 +10,7 @@ const NavigationHeader: React.FC = () => {
         backgroundColor: palette.primaryBlue,
         position: "sticky",
         top: 0,
+        zIndex: 1000,
       }}
     >
       <div
@@ -50,8 +51,7 @@ const NavigationHeader: React.FC = () => {
 export default NavigationHeader;
 
 const DEBUG_predictionURLWithData =
-  "/prediction?prediction={%22prediction%22:[{%22id%22:23,%22name%22:%22Traktkantarell%22,%22latin_name%22:%22Craterellus%20tubaeformis%22,%22description%22:%22Traktkantarell%20har%20gr%C3%A5brun,%20traktformet%20hatt,%20nedl%C3%B8pende%20folder%20og%20hul%20stilk.%20Undersiden%20av%20hatten%20er%20lysere%20enn%20oversiden.%20Avrundet%20stilk.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://upload.wikimedia.org/wikipedia/commons/1/14/Cantharellus_tubaeformis_1.jpg%22},{%22id%22:36,%22name%22:%22Trompetsopper%22,%22latin_name%22:%22Craterellus%22,%22description%22:%22Description%20missing.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://media.snl.no/media/14704/standard_Craterellus_cornucopioides-Oslo-Bygdoy_3_.JPG%22}],%22probability%22:0.5823688507080078}";
-
+  "/prediction?prediction=[{%22prediction%22:[{%22id%22:32,%22name%22:%22Kantarell%22,%22latin_name%22:%22Cantharellus%20cibarius%22,%22description%22:%22Kantarell%20har%20gul,%20traktformet%20hatt,%20nedl%C3%B8pende%20folder%20og%20god%20kantarellukt.%20Har%20samme%20gulfarge%20p%C3%A5%20undersiden%20som%20oversiden.%20Avrundet%20stilk.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://media.snl.no/media/116599/standard_compressed_kantarell_37810.jpg%22}],%22name%22:%22Cantharellus%20cibarius%22,%22probability%22:0.6090075969696045},{%22prediction%22:[{%22id%22:44,%22name%22:%22Svart%20trompetsopp%22,%22latin_name%22:%22Craterellus%20cornucopioides%22,%22description%22:%22Svart%20trompetsopp,%20ogs%C3%A5%20kalt%20sort%20trompetsopp,%20er%20en%20sopp%20i%20trompetsoppslekten%20av%20kantarellfamilien.%20Svart%20trompetsopp%20sies%20%C3%A5%20vokse%20p%C3%A5%20jordbunn%20der%20eik%20og%20hassel%20forekommer,%20men%20kan%20v%C3%A6re%20vanskelig%20%C3%A5%20f%C3%A5%20%C3%B8ye%20p%C3%A5.%20Den%20regnes%20ikke%20for%20%C3%A5%20ha%20noen%20forvekslingsarter.%22,%22edible%22:true,%22poisonous%22:false,%22area%22:%22Norge%22,%22image_url%22:%22https://ultimate-mushroom.com/images/craterellus-cornucopioides-3.jpg%22}],%22name%22:%22Craterellus%20cornucopioides%22,%22probability%22:0.32500141859054565},{%22prediction%22:[],%22name%22:%22Ampulloclitocybe%20clavipes%22,%22probability%22:0.013549172319471836},{%22prediction%22:[],%22name%22:%22Infundibulicybe%20gibba%22,%22probability%22:0.011133745312690735},{%22prediction%22:[],%22name%22:%22Pseudoclitocybe%20cyathiformis%22,%22probability%22:0.010165112093091011}]";
 const StyledFontWrapper = styled.div`
   @font-face {
     font-family: retro;

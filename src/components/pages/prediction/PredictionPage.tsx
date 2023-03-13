@@ -1,22 +1,32 @@
 import queryString from "query-string";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { IMusroom } from "../../../api/interfaces";
+import { IMusroom, IPrediction } from "../../../api/interfaces";
 import MushroomPredictionCard from "../../MushroomPredictionCard";
+import MushroomPredictionSummary from "./MushroomPredictionSummary";
 
 const PredictionPage: React.FC = () => {
   const predictionJSON = queryString.parse(window.location.search).prediction;
-  let prediction = JSON.parse(predictionJSON as any);
-
-  if (prediction.prediction.length == 0) {
-    prediction.prediction.push(fallback_prediction);
-  }
-
-  console.log("querystring_parsed: ", prediction);
+  let predictions: IPrediction[] = JSON.parse(predictionJSON as any);
 
   return (
     <CardsWrapper>
-      <MushroomPredictionCard prediction={prediction as any} key={`mpc_0}`} />
+      <MushroomPredictionSummary predictions={predictions} />
+      {predictions.map((prediction, index) => {
+        if (prediction.prediction.length == 0) {
+          prediction.prediction.push(fallback_prediction);
+        }
+
+        return (
+          <>
+            <MushroomPredictionCard
+              prediction={prediction as any}
+              key={`mpc_${index}}`}
+            />
+            <br />
+          </>
+        );
+      })}
     </CardsWrapper>
   );
 };

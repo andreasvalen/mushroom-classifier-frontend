@@ -16,11 +16,7 @@ export const mushroomFetch = async ({
   contentType?: string;
 }): Promise<any> => {
   const searchParams = new URLSearchParams(qs);
-  console.log("search:", searchParams, !!searchParams);
   const url = `${mushroomServerURL}/${endpoint}`;
-
-  console.log("type:", contentType);
-
   const response = await fetch(
     `${url}${
       searchParams.values.length == 0 ? "/" : "?"
