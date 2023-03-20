@@ -18,13 +18,13 @@ const PredictionPage: React.FC = () => {
         }
 
         return (
-          <>
+          <div key={`wrapper_mpc_${index}}`}>
             <MushroomPredictionCard
               prediction={prediction as any}
               key={`mpc_${index}}`}
             />
             <br />
-          </>
+          </div>
         );
       })}
     </CardsWrapper>
